@@ -17,7 +17,7 @@ export class App extends Component {
   }
 
   componentDidUpdate() {
-    const { contacts } = this.state;
+    const contacts = [...this.state.contacts];
     localStorage.setItem('my-contacts', JSON.stringify(contacts));
   }
 
@@ -45,7 +45,7 @@ export class App extends Component {
   };
 
   doubleContact = name => {
-    const { contacts } = this.state;
+    const contacts = [...this.state.contacts];
     return contacts.find(contact => contact.name.toLowerCase() === name);
   };
 
