@@ -25,11 +25,6 @@ export class App extends Component {
     const id = nanoid();
     const { name, number } = data;
 
-    // const contact = {
-    //   number,
-    //   name,
-    //   id,
-    // };
     this.setState(prevState => ({
       contacts: [...prevState.contacts, { name, number, id }],
     }));
