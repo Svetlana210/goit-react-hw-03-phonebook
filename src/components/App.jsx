@@ -13,12 +13,16 @@ export class App extends Component {
 
   componentDidMount() {
     const contacts = JSON.parse(localStorage.getItem('my-contacts'));
-    this.setState({ contacts });
+    if (contacts) {
+      this.setState({ contacts });
+    }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevState) {
     const { contacts } = this.state;
-    localStorage.setItem('my-contacts', JSON.stringify(contacts));
+    if (contacts !== prevState.contacts) {
+      localStorage.setItem('my-contacts', JSON.stringify(contacts));
+    }
   }
 
   formSubmitHandler = data => {
