@@ -22,7 +22,7 @@ export class App extends Component {
   }
 
   componentDidUpdate() {
-    const contacts = [...this.state.contacts];
+    const { contacts } = this.state;
     localStorage.setItem('my-contacts', JSON.stringify(contacts));
   }
 
@@ -41,8 +41,7 @@ export class App extends Component {
     });
   };
   filterContacts = () => {
-    const { filter } = this.state;
-    const contacts = [...this.state.contacts];
+    const { filter, contacts } = this.state;
 
     return contacts.filter(contact => {
       return contact.name.toLowerCase().includes(filter.toLowerCase());
@@ -50,7 +49,7 @@ export class App extends Component {
   };
 
   doubleContact = name => {
-    const contacts = [...this.state.contacts];
+    const { contacts } = this.state;
     return contacts.find(contact => contact.name.toLowerCase() === name);
   };
 
